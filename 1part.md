@@ -88,6 +88,7 @@ We used an XXX board to emulate the lighthing system. XXX board has a single RGB
 [image]
 
 After the Raspberry PI detects user's mood, it sends an HTTP post to the XXX board API endpoint containing RGB values. For testing purposes we used the following settings:
+
 | Detected mood | R | G | B | Color shown |
 | ------------- | - | - | - | ----------- |
 | Anger         | 0 | 0 | 1 | Blue        |
