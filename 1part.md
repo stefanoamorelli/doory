@@ -27,7 +27,7 @@ Doory will be able to modify your room atmosphere depending on your current mood
 
 We designed Doory as a small and aesthetic device that should be put on the wall, near a room's entrance. The case has a plain design and will be 3D-printed in two different models: black and white. We kept the size and shape of the case as simple as possible, to better adapt with any room furniture and design.
 
-<img src="https://github.com/2n-1/doory/blob/master/1.jpg" alt="alt text" style="max-width:200px;">
+<img src="https://github.com/2n-1/doory/blob/master/1.jpg" style="width:200px !important;">
 
 ## Doory knows how do you feel today
 
