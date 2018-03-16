@@ -1,15 +1,16 @@
-<center>
+
+<p align="center">
 # Doory: a smart mood reader. 
-</center>
+</p>
 
 ## A typical bad day 
 Picture this. It's a rainy day. Wake up at 5 AM. Want to take a shower, but there's no hot water, so _cold shower_. Then you take your car and head to work, but... **traffic**. Another boring day. You feel overwhelmed and, even worse, nobody understands you, neither your workteam neither your family. Once back home, at the end of that bad day, this is Mario:
 
-<center>
+<p align="center">
 ![alt text](1.gif)
 
 _Mario arguing with a woman. His ex-wife_.
-</center>
+</p>
 That is a typical day without Doory. 
 
 ## The same day with Doory
