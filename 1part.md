@@ -1,16 +1,11 @@
-
-<p align="center">
 # Doory: a smart mood reader. 
-</p>
 
 ## A typical bad day 
 Picture this. It's a rainy day. Wake up at 5 AM. Want to take a shower, but there's no hot water, so _cold shower_. Then you take your car and head to work, but... **traffic**. Another boring day. You feel overwhelmed and, even worse, nobody understands you, neither your workteam neither your family. Once back home, at the end of that bad day, this is Mario:
 
-<p align="center">
 ![alt text](1.gif)
+ _Mario arguing with a woman. His ex-wife_.
 
-_Mario arguing with a woman. His ex-wife_.
-</p>
 That is a typical day without Doory. 
 
 ## The same day with Doory
@@ -21,11 +16,9 @@ Doory will be able to modify your room atmosphere depending on your current mood
 
 Playing your favorite playlist, setting the right lighting, Doory will gradually change your mood turning even the worst day into the best one.
 
-<center>
 ![alt text](2.gif)
 
 _Mario and his wife dancing in a perfect room atmosphere, carefully prepared by Doory._
-</center>
 
 Doory will be able to modify your room atmosphere depending on your current mood. It will control lighthing and music out of the box, but thanks to an open API it will be able to communicate with any other IoT device in your house: smart TVs, essential oil diffusers and even tea-pots. 
 
@@ -33,9 +26,7 @@ Doory will be able to modify your room atmosphere depending on your current mood
 
 We designed Doory as a small and aesthetic device that should be put on the wall, near a room's entrance. The case has a plain design and will be 3D-printed in two different models: black and white. We kept the size and shape of the case as simple as possible, to better adapt with any room furniture and design.
 
-<center>
 ![alt text](1.jpg =200)
-</center>
 
 ## Doory knows how do you feel today
 
