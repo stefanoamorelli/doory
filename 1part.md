@@ -21,13 +21,15 @@ Playing your favorite playlist, setting the right lighting, Doory will gradually
 
 _Mario and his wife dancing in a perfect room atmosphere, carefully prepared by Doory._
 
-Doory will be able to modify your room atmosphere depending on your current mood. It will control lighthing and music out of the box, but thanks to an open API it will be able to communicate with any other IoT device in your house: smart TVs, essential oil diffusers and even tea-pots. 
+> Leave everything behind, open your Doory, enjoy your life.
 
 ## Aesthetic and universal design 
 
 We designed Doory as a small and aesthetic device that should be put on the wall, near a room's entrance. The case has a plain design and will be 3D-printed in two different models: black and white. We kept the size and shape of the case as simple as possible, to better adapt with any room furniture and design.
 
 <img src="https://github.com/2n-1/doory/blob/master/1.jpg" width="200">
+
+_A draft 3D model of the case._
 
 ## Doory knows how do you feel today
 
@@ -141,6 +143,31 @@ Our idea is to make Doory one hundred percent customizable. Everyone has differe
 ## Doory talks with your home 
 
 We plan to provide an open API for Doory. Every IoT device in your home will be able to communicate with Doory, and collaborate to create an eco-system that makes you feel better. Your smart TV could play a comedy when you are sad, your IoT tea-pot would start preparing a tea when you feel tired and your essential oil diffuser would spray some relaxing fragrance when someone made you angry.
+
+To draft API specification is reported below.
+
+```javascript
+{
+ "endpoint" : "/api/mood",
+ "method"   : "GET",
+ "params"   : [ 
+                { "name" : "string API_KEY",
+		  "required" : true 
+		 } 
+	      ],
+ "response  : [ 
+                { "code" : 200,
+		  "content" : {
+		    "mood" : "string CURRENT_MOOD",
+		    "last_detected": "timestamp DATE"
+		    },
+		},
+		{ "code"  : 401
+		  "content" : { "error" : "Invalid API key." }
+		}
+	      ]
+} 
+```
  
 
 
