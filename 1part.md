@@ -92,7 +92,7 @@ We used a FRDM-K64F board to emulate the lighthing system. FRDM-K64F board has a
 
 [image]
 
-After the Raspberry PI detects user's mood, it sends an HTTP post to the XXX board API endpoint containing RGB values. For testing purposes we used the following settings:
+After the Raspberry PI detects user's mood, it sends an HTTP post to the FRDM-K64F board API endpoint containing RGB values. For testing purposes we used the following settings:
 
 | Detected mood | R | G | B | Color shown |
 | ------------- | - | - | - | ----------- |
