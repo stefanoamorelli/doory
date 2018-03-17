@@ -39,7 +39,7 @@ Inside the case, we decided to use a Raspberry PI board with a camera module. Th
 	camera.capture('photo.jpg')
 	credentials = GoogleCredentials.get_application_default()
 	service = discovery.build('vision', 'v1', credentials = credentials)
-	with open('image.jpg', 'rb') as image:
+	with open('photo.jpg', 'rb') as image:
 		image_content = base64.b64encode(image.read())
 		service_request = service.images().annotate(body={
 			'requests': [{
@@ -131,6 +131,7 @@ After the Raspberry PI detects user's mood, it sends an HTTP post to the FRDM-K6
 
 ---
 [2] FRDM-K64F board https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/k-seriesperformancem4/k2x-usb/freedom-development-platform-for-kinetis-k64-k63-and-k24-mcus:FRDM-K64F
+
 [3] Conrad Connect https://conradconnect.de/en
 
 ## Tell Doory what do you like
