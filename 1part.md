@@ -21,7 +21,7 @@ Playing your favorite playlist, setting the right lighting, Doory will gradually
 
 _Mario and his wife dancing in a perfect room atmosphere, carefully prepared by Doory._
 
-> Leave everything behind, open your Doory, enjoy your life.
+> ## Leave everything behind, open your Doory, enjoy your life.
 
 ## Aesthetic and universal design 
 
