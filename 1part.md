@@ -99,17 +99,24 @@ Each supported emotion has a LIKEHOOD value in the API response. This value repr
           ],
 ...
 ```
-The most likely mood is then selected as follows.
 
-[code]
+The most likely mood will be then selected implementing the following pseudocode.
+
+```
+likehood = none
+detected_emotion = none
+for i from 0 to N - 1
+   if response_emotions[i].likehood > likehood
+       detected_emotion = response_emotions[i]
+```
 
 ---
 
 [1] Google Cloud Vision API https://cloud.google.com/vision/docs/reference/rest/
 
-## Lighthing control via XXX board
+## Lighthing control via FRDM-K64F board
 
-We used a FRDM-K64F board to emulate the lighthing system. FRDM-K64F board has a single RGB led. We connected Raspberry PI board to FRDM-K64F board using a simple HTTP API. For a better communication between boards we plan to implement Conrad Connect system [2].
+We used a FRDM-K64F board [2] to emulate the lighthing system. FRDM-K64F board has a single RGB led. We connected Raspberry PI board to FRDM-K64F board using a simple HTTP API. For a better communication between boards we plan to implement Conrad Connect system [3].
 
 <img src="https://github.com/2n-1/doory/blob/master/2.jpg" style="width:20px !important;">
 
@@ -123,7 +130,8 @@ After the Raspberry PI detects user's mood, it sends an HTTP post to the FRDM-K6
 | Surprise      | 1 | 1 | 0 | Yellow      |
 
 ---
-[2] Conrad Connect https://conradconnect.de/en
+[2] FRDM-K64F board https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/k-seriesperformancem4/k2x-usb/freedom-development-platform-for-kinetis-k64-k63-and-k24-mcus:FRDM-K64F
+[3] Conrad Connect https://conradconnect.de/en
 
 ## Tell Doory what do you like
 
