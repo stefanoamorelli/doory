@@ -88,7 +88,7 @@ The most likely mood is then selected as follows.
 
 ## Lighthing control via XXX board
 
-We used an XXX board to emulate the lighthing system. XXX board has a single RGB led. We connected Raspberry PI board to XXX board using a simple HTTP API. For a better communication between boards we plan to implement Conrad Connect system [2].
+We used a FRDM-K64F board to emulate the lighthing system. FRDM-K64F board has a single RGB led. We connected Raspberry PI board to FRDM-K64F board using a simple HTTP API. For a better communication between boards we plan to implement Conrad Connect system [2].
 
 [image]
 
