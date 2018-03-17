@@ -105,6 +105,8 @@ Each supported emotion has a LIKEHOOD value in the API response. This value repr
 The most likely mood will be then selected implementing the following pseudocode.
 
 ```
+# N = number of supported emotions
+
 likehood = none
 detected_emotion = none
 for i from 0 to N - 1
@@ -148,25 +150,28 @@ To draft API specification is reported below.
 
 ```javascript
 {
- "endpoint" : "/api/mood",
- "method"   : "GET",
- "params"   : [ 
-                { "name" : "string API_KEY",
-		  "required" : true 
-		 } 
-	      ],
- "response  : [ 
-                { "code" : 200,
-		  "content" : {
-		    "mood" : "string CURRENT_MOOD",
-		    "last_detected": "timestamp DATE"
-		    },
-		},
-		{ "code"  : 401
-		  "content" : { "error" : "Invalid API key." }
+	"endpoint": "/api/mood",
+	"method": "GET",
+	"params": [
+		{
+			"name": "string API_KEY",
+			"required": true
 		}
-	      ]
-} 
+	],
+	"success_response": {
+		"code": 200,
+		"content": {
+			"mood": "string CURRENT_MOOD",
+			"last_detected": "timestamp DATE"
+		}
+	},
+	"error_response": {
+		"code": 401,
+		"content": {
+			"error": "Invalid API key."
+		}
+	}
+}
 ```
  
 
