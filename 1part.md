@@ -33,6 +33,27 @@ We designed Doory as a small and aesthetic device that should be put on the wall
 
 Inside the case, we decided to use a Raspberry PI board with a camera module. The idea is to take a photo whenever a person enters the room to detect his mood. The camera should be directed in the right angle to better capture user's face. We plan to use a motion sensor to detect user's entrance. Mood detection is achieved by using a Python script that connects to Google Cloud Vision API [1] through REST HTTP requests, as shown in the source code below.
 
+```python
+...
+	camera = picamera.PiCamera()
+	camera.capture('photo.jpg')
+	credentials = GoogleCredentials.get_application_default()
+	service = discovery.build('vision', 'v1', credentials = credentials)
+	with open('image.jpg', 'rb') as image:
+		image_content = base64.b64encode(image.read())
+		service_request = service.images().annotate(body={
+			'requests': [{
+				'image': {
+					'content': image_content.decode('UTF-8')
+				},
+				'features': [{
+					'type': 'FACE_DETECTION',
+					'maxResults': 10
+				}]
+			 }]
+		})
+...
+```
 
 Google Cloud Vision API takes the user's face photo as input and returns a JSON object containing several informations about position and angles of different face parts such as mouth, eyes and nose. Using that data, the API estimates a possible mood the user is feeling in that moment.
 
