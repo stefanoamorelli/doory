@@ -90,7 +90,7 @@ The most likely mood is then selected as follows.
 
 We used a FRDM-K64F board to emulate the lighthing system. FRDM-K64F board has a single RGB led. We connected Raspberry PI board to FRDM-K64F board using a simple HTTP API. For a better communication between boards we plan to implement Conrad Connect system [2].
 
-<img src="https://github.com/2n-1/doory/blob/master/2.jpg" style="width:50px !important;">
+<img src="https://github.com/2n-1/doory/blob/master/2.jpg" style="width:20px !important;">
 
 After the Raspberry PI detects user's mood, it sends an HTTP post to the FRDM-K64F board API endpoint containing RGB values. For testing purposes we used the following settings:
 
