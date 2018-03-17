@@ -146,7 +146,7 @@ Our idea is to make Doory one hundred percent customizable. Everyone has differe
 
 We plan to provide an open API for Doory. Every IoT device in your home will be able to communicate with Doory, and collaborate to create an eco-system that makes you feel better. Your smart TV could play a comedy when you are sad, your IoT tea-pot would start preparing a tea when you feel tired and your essential oil diffuser would spray some relaxing fragrance when someone made you angry.
 
-To draft API specification is reported below.
+A draft API specification is reported below.
 
 ```javascript
 {
