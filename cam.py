@@ -73,7 +73,7 @@ if UNLIKELY not in list_data[1]:
 	mood = 1
 
 #ANGER CHECK
-os.system("cat out | grep joyLikelihood > response.txt")
+os.system("cat out | grep angerLikelihood > response.txt")
 
 with open ("response.txt", "r") as myfile:
 	data=myfile.readline()
@@ -84,19 +84,19 @@ if UNLIKELY not in list_data[1]:
 	mood = 2
 
 if mood == 0:
-	GPIO.output(gpio0.HIGH) #FRAGRANCE demo
+	GPIO.output(gpio0, GPIO.HIGH) #FRAGRANCE demo
 	os.system("/home/root/script.sh REST on on off")
 
 if mood == 1:
-	GPIO.output(gpio1.HIGH)
+	GPIO.output(gpio1, GPIO.HIGH)
 	os.system("/home/root/script.sh REST on off off")
 
 if mood == 2:
-	GPIO.output(gpio2.HIGH)
+	GPIO.output(gpio2, GPIO.HIGH)
 	os.system("/home/root/script.sh REST off off on")
 
 if mood == 3:
-	GPIO.output(gpio3.HIGH)
+	GPIO.output(gpio3, GPIO.HIGH)
 	os.system("/home/root/script.sh REST off on off")
 
 print(mood)
