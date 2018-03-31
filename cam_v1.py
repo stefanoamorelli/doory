@@ -89,7 +89,7 @@ def main():
   #Analysis on the data
   maxim = -1;
   for i in range(0,4):
-    if(mood_statistic > max):
+    if(mood_statistic > maxim):
       mood = i;
       maxim = mood_statistic[i]
     
