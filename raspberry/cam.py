@@ -70,7 +70,8 @@ def main():
     mood_index = 3
     for i in range(0,3):
       #Filter the response for each mood
-      os.system("cat out | grep ", likelihs[i]," > response.txt")
+      command = "cat out | grep " + likelihs[i] + " > response.txt" 
+      os.system(command)
       
       with open("response.txt", "r") as myfile:
         data = myfile.readline()
