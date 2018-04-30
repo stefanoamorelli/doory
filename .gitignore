@@ -1,3 +1,4 @@
 localhost_files/
 *.html
 *.swp
+app/node_modules

@@ -6,35 +6,42 @@
    .row
     .col
      span {{ body }}
-   .row
+   .row(v-if='title == "Settings"')
+    .col-6
+     label Name:
+     input.form-control(type='text')
+    .col-6
+     label Conrad Connect:
+     select.form-control(disabled)
+      option Enable
+      option Disable
+    .col-6.mt-3
+     label Doory speech:
+     select.form-control
+      option Enable
+      option Disable
+    .col-6.mt-3
+     label Custom API:
+     input.form-control(type='text')
+    .col-12.mt-3.justify-content-end.d-flex
+     .setting__icon.justify-content-center.align-items-center.save
+       i.fas.fa-save
+   .row(v-if='title != "Settings"')
     .col.d-flex.flex-column.justify-content-center.align-items-center
      .setting__icon.justify-content-center.align-items-center
-      i.fas.fa-music
+      i.fas.fa-chart-line
     .col.d-flex.flex-column.justify-content-center.align-items-center
-     .setting__icon.justify-content-center.align-items-center
-      i.fas.fa-lightbulb
-   .row
-    .col.d-flex.flex-column.justify-content-center.align-items-center
-     select.form-control
-      option(v-for='playlist in playlists') {{ playlist }}
-    .col.d-flex.flex-column.justify-content-center.align-items-center
-     select.form-control
-      option(v-for='light in lights') {{ light }}
-
+     b You were {{ title }}:
+     span {{ stats }} days
    
 </template>
 
 <script>
-var PLAYLISTS = ['Rock', 'Pop', 'New age', 'Jazz'];
-var LIGHTS = ['Green', 'Blue', 'Yellow', 'Red'];
 export default {
-  props: ['title', 'image', 'body'],
+  props: ['title', 'image', 'body', 'stats'],
   components: {},
   data() {
-    return {
-      lights: LIGHTS,
-      playlists: PLAYLISTS,
-    };
+    return {};
   },
   computed: {
     background() {
@@ -45,10 +52,16 @@ export default {
 </script>
 <style lang='stylus' scoped>
 .setting
+ cursor -webkit-grab
+ background white
  color gray
  border-radius 10px
  margin 50px 0
- box-shadow 0 0 50px 10px #eee
+ box-shadow 0 0 70px 20px rgba(0,0,0,0.1) 
+ transition all .5s ease
+.setting:hover
+ box-shadow 0 0 70px 10px rgba(0,0,0,0.1) 
+ transform scale(1.05)
 .setting__title
  background-size cover
  background-position center
@@ -79,7 +92,7 @@ export default {
 
 .setting__body
  padding 30px
- height 300px
+ height 320px
 .setting__icon
  width 60px
  height 60px
@@ -92,4 +105,12 @@ export default {
  color white
  display flex
  
+.save
+ transition all .5s ease
+ cursor pointer
+.save:hover
+ opacity .8
+
+label
+ font-size .8em
 </style>
