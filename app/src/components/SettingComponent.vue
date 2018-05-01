@@ -6,25 +6,25 @@
    .row
     .col
      span {{ body }}
-   .row(v-if='title == "Settings"')
+   .row(v-show='title == "Settings"')
     .col-6
      label Name:
-     input.form-control(type='text')
+     input.form-control(v-model="firstname" value='Luigi')
     .col-6
      label Conrad Connect:
-     select.form-control(disabled)
-      option Enable
-      option Disable
+     select.form-control(disabled )
+      option(value='true') Enable
+      option(value='false') Disable
     .col-6.mt-3
      label Doory speech:
-     select.form-control
-      option Enable
-      option Disable
+     select.form-control#speech
+      option(value='true') Enable
+      option(value='false') Disable
     .col-6.mt-3
      label Custom API:
      input.form-control(type='text')
     .col-12.mt-3.justify-content-end.d-flex
-     .setting__icon.justify-content-center.align-items-center.save
+     .setting__icon.justify-content-center.align-items-center.save(@click='speechact')
        i.fas.fa-save
    .row(v-if='title != "Settings"')
     .col.d-flex.flex-column.justify-content-center.align-items-center
@@ -37,16 +37,36 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   props: ['title', 'image', 'body', 'stats'],
   components: {},
   data() {
-    return {};
+    return {
+      firstname: '',
+      speech: '',
+    };
+  },
+  methods: {
+    speechact() {
+      alert(1);
+    },
   },
   computed: {
     background() {
       return 'background-image: url("' + this.image + '")';
     },
+  },
+  mounted() {
+    if (this.title == 'Settings') {
+      axios.get('http://188.166.111.117/doory/get.php').then(
+        function(response) {
+          this.firstname = response.data.name;
+          this.speech = response.data.speech;
+        }.bind(this),
+      );
+    }
   },
 };
 </script>

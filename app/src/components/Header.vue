@@ -2,7 +2,7 @@
  section#header
   .container
    center
-    .check
+    .check(@click='check')
      i.fas.fa-camera
    h1 Doory
    .header__slogan.text-center Improving your mood, daily
@@ -15,10 +15,22 @@
 
 <script>
 import Chart from './Chart.js';
+import axios from 'axios';
+
 export default {
   components: {Chart},
   data() {
     return {};
+  },
+  methods: {
+    check() {
+      alert('Reading your mood..');
+      axios
+        .get('http://188.166.111.117/doory/check.php')
+        .then(function(response) {
+          console.log(response);
+        });
+    },
   },
 };
 </script>

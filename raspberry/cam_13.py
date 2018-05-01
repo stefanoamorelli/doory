@@ -103,26 +103,62 @@ def main():
       mood = i;
       maxim = mood_statistic[i]
     
+  contents = urllib.request.urlopen("http://188.166.111.117/doory/get.php").read()
+
+  if contents == 'yes':
   #Action based on mood
-  if mood == 0:
-    GPIO.output(gpio0, GPIO.HIGH) #FRAGRANCE demo
-    os.system("/home/root/script.sh REST on on off")
-  
-  if mood == 1:
-    GPIO.output(gpio1, GPIO.HIGH) #FRAGRANCE demo
-    os.system("/home/root/script.sh REST on off off")
-  
-  if mood == 2:
-    GPIO.output(gpio2, GPIO.HIGH) #FRAGRANCE demo
-    os.system("/home/root/script.sh REST off off on")
-  
-  if mood == 3:
-    GPIO.output(gpio3, GPIO.HIGH) #FRAGRANCE demo
-    os.system("/home/root/script.sh REST off on off")
+    if mood == 0:
+      #GPIO.output(gpio0, GPIO.HIGH) #FRAGRANCE demo
+      #os.system("/home/root/script.sh REST on on off")
+      os.system("aplay Happy.wav")
+    
+    if mood == 1:
+      #GPIO.output(gpio1, GPIO.HIGH) #FRAGRANCE demo
+      #os.system("/home/root/script.sh REST on off off")
+      os.system("aplay Sorrow.wav")
+      
+    if mood == 2:
+      #GPIO.output(gpio2, GPIO.HIGH) #FRAGRANCE demo
+      #os.system("/home/root/script.sh REST off off on")
+      os.system("aplay Angry.wav")
+      
+    if mood == 3:
+      #GPIO.output(gpio3, GPIO.HIGH) #FRAGRANCE demo
+      #os.system("/home/root/script.sh REST off on off")
+      os.system("aplay Happy.wav")
+
+    if mood == 4:
+      #GPIO.output(gpio3, GPIO.HIGH) #FRAGRANCE demo
+      #os.system("/home/root/script.sh REST off on off")
+      os.system("aplay Neutral.wav")
     
   print(mood)
-  contents = urllib.request.urlopen("http://9606fa45.ngrok.io/prova.html").read()
-  print(contents)
+
+  if mood == 0:
+    #GPIO.output(gpio0, GPIO.HIGH) #FRAGRANCE demo
+    #os.system("/home/root/script.sh REST on on off")
+    contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/surprise/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
+    
+  if mood == 1:
+    #GPIO.output(gpio1, GPIO.HIGH) #FRAGRANCE demo
+    #os.system("/home/root/script.sh REST on off off")
+    contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/sorrow/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
+    
+  if mood == 2:
+    #GPIO.output(gpio2, GPIO.HIGH) #FRAGRANCE demo
+    #os.system("/home/root/script.sh REST off off on")
+    contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/angry/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
+     
+  if mood == 3:
+    #GPIO.output(gpio3, GPIO.HIGH) #FRAGRANCE demo
+    #os.system("/home/root/script.sh REST off on off")
+    contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/happy/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
+
+  if mood == 4:
+    #GPIO.output(gpio3, GPIO.HIGH) #FRAGRANCE demo
+    #os.system("/home/root/script.sh REST off on off")
+    contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/neutral/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
+
   
 #if name == '__main__':
 main()
