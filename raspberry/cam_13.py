@@ -5,6 +5,7 @@ import picamera
 import argparse
 import base64
 import json
+import time
 import urllib.request
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
@@ -29,6 +30,12 @@ GPIO.setup(gpio2, GPIO.OUT)
 GPIO.setup(gpio3, GPIO.OUT)
 
 def main():
+	
+  contents1 = urllib.request.urlopen("http://188.166.111.117/doory/check1.php").read()
+  while contents1 == "no":
+    time.sleep(1)
+    contents1 = urllib.request.urlopen("http://188.166.111.117/doory/check1.php").read()
+
   responses = ["VERY_LIKELY", "LIKELY", "POSSIBLE"]
   likelihs = ["surpriseLikelihood", "sorrowLikelihood", "angerLikelihood", "joyLikelihood"]
   mood_statistic = [0, 0, 0, 0, 0]
