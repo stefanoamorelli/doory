@@ -31,10 +31,16 @@ GPIO.setup(gpio3, GPIO.OUT)
 
 def main():
 	
-  contents1 = urllib.request.urlopen("http://188.166.111.117/doory/check1.php").read()
-  while contents1 == "no":
+  contents1 = urllib.request.urlopen("http://188.166.111.117/doory/get.php").read()
+  contents1 = int(contents1)
+  print(contents1)
+  while contents1 == 0:
     time.sleep(1)
-    contents1 = urllib.request.urlopen("http://188.166.111.117/doory/check1.php").read()
+    contents1 = urllib.request.urlopen("http://188.166.111.117/doory/get.php").read()
+    contents1 = int(contents1)
+    print(contents1)
+  
+  contents2 = urllib.request.urlopen("http://188.166.111.117/doory/toggle.php").read()
 
   responses = ["VERY_LIKELY", "LIKELY", "POSSIBLE"]
   likelihs = ["surpriseLikelihood", "sorrowLikelihood", "angerLikelihood", "joyLikelihood"]
@@ -46,6 +52,8 @@ def main():
     #Get an image
     camera_path = "image"+str(picture)+".jpg"
     camera.capture(camera_path)
+  
+  print("Photos done")
 
   for picture in range(0,10):
     #Google API for mood recognition	
@@ -110,9 +118,10 @@ def main():
       mood = i;
       maxim = mood_statistic[i]
     
-  contents = urllib.request.urlopen("http://188.166.111.117/doory/get.php").read()
+  contents = urllib.request.urlopen("http://188.166.111.117/doory/check1.php").read()
+  contents = int(contents)
 
-  if contents == 'yes':
+  if contents == 1:
   #Action based on mood
     if mood == 0:
       #GPIO.output(gpio0, GPIO.HIGH) #FRAGRANCE demo
@@ -145,7 +154,11 @@ def main():
     #GPIO.output(gpio0, GPIO.HIGH) #FRAGRANCE demo
     #os.system("/home/root/script.sh REST on on off")
     contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/surprise/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
-    
+    #get song, aplay background, pkill
+    #song = urllib.request.urlopen("http://188.166.111.117/doory/get_song_data.php?s=Happy")
+    #print(song)
+    #os.system("aplay /home/root/audio/" + song + " &")
+
   if mood == 1:
     #GPIO.output(gpio1, GPIO.HIGH) #FRAGRANCE demo
     #os.system("/home/root/script.sh REST on off off")
@@ -165,8 +178,19 @@ def main():
     #GPIO.output(gpio3, GPIO.HIGH) #FRAGRANCE demo
     #os.system("/home/root/script.sh REST off on off")
     contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/neutral/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
-
   
+  contents4 = urllib.request.urlopen("http://188.166.111.117/doory/check_stop.php").read()
+  contents4 = int(contents4)
+  print(contents4)
+  while contents4 == 0:
+    time.sleep(1)
+    contents4 = urllib.request.urlopen("http://188.166.111.117/doory/check_stop.php").read()
+    contents4 = int(contents4)
+    print(contents4)
+  
+  contents5 = urllib.request.urlopen("http://188.166.111.117/doory/toggle_stop.php").read()
+  # pkill
+
 #if name == '__main__':
 main()
 
