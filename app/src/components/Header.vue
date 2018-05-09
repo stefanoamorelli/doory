@@ -2,8 +2,13 @@
  section#header
   .container
    center
-    .check(@click='check')
-     i.fas.fa-camera
+    .row.justify-content-center
+     .col-auto
+      .check(@click='check')
+       i.fas.fa-camera
+     .col-auto
+      .check1(@click='stop')
+       i.fas.fa-pause
    h1 Doory
    .header__slogan.text-center Improving your mood, daily
    .small
@@ -23,6 +28,13 @@ export default {
     return {};
   },
   methods: {
+    stop() {
+      axios
+        .get('http://188.166.111.117/doory/stop.php')
+        .then(function(response) {
+          console.log(response);
+        });
+    },
     check() {
       alert('Reading your mood..');
       axios
@@ -65,7 +77,7 @@ h1
  font-size .8em
 .small
  position relative
-.check
+.check, .check1
  display flex
  align-items center
  justify-content center
@@ -78,9 +90,11 @@ h1
  font-size 2em
  transition all 1s ease
  cursor pointer
-.check:hover
+.check:hover, .check1:hover
  transform scale(1.2)
  background white
  color #238cf9
+.check1
+ border none
 
 </style>

@@ -9,7 +9,7 @@
    .row(v-show='title == "Settings"')
     .col-6
      label Name:
-     input.form-control(v-model="firstname" value='Luigi')
+     input.form-control(v-model="firstname")
     .col-6
      label Conrad Connect:
      select.form-control(disabled )
@@ -17,27 +17,36 @@
       option(value='false') Disable
     .col-6.mt-3
      label Doory speech:
-     select.form-control#speech
+     select.form-control(v-model='speech')
       option(value='true') Enable
       option(value='false') Disable
     .col-6.mt-3
      label Custom API:
      input.form-control(type='text')
     .col-12.mt-3.justify-content-end.d-flex
-     .setting__icon.justify-content-center.align-items-center.save(@click='speechact')
+     .setting__icon.justify-content-center.align-items-center.save(@click='savedata()')
        i.fas.fa-save
    .row(v-if='title != "Settings"')
-    .col.d-flex.flex-column.justify-content-center.align-items-center
+    .col-4.d-flex.flex-column.justify-content-center.align-items-center
      .setting__icon.justify-content-center.align-items-center
       i.fas.fa-chart-line
-    .col.d-flex.flex-column.justify-content-center.align-items-center
+    .col-8.d-flex.flex-column.justify-content-center.align-items-center
      b You were {{ title }}:
      span {{ stats }} days
+    .col-4.d-flex.flex-column.justify-content-center.align-items-center
+     .setting__icon.justify-content-center.align-items-center
+      i.fas.fa-music
+    .col-8.d-flex.flex-column.justify-content-center.align-items-center
+     b Select song: 
+     select.form-control(v-model='song' @change='savedata')
+      option(v-for='song in songs' :value='song') {{ song }}
    
 </template>
 
 <script>
 import axios from 'axios';
+
+var SONGS = ['Rock', 'NewAge', 'Pop', 'HipHop', 'Jazz'];
 
 export default {
   props: ['title', 'image', 'body', 'stats'],
@@ -46,27 +55,78 @@ export default {
     return {
       firstname: '',
       speech: '',
+      song: '',
+      songs: SONGS,
     };
-  },
-  methods: {
-    speechact() {
-      alert(1);
-    },
   },
   computed: {
     background() {
       return 'background-image: url("' + this.image + '")';
     },
   },
+  methods: {
+    load() {
+      if (this.title == 'Settings') {
+        axios.get('http://188.166.111.117/doory/get_data.php').then(
+          function(response) {
+            this.firstname = response.data.name;
+            this.speech = response.data.speech;
+            console.log(response.data);
+          }.bind(this),
+        );
+      } else {
+        axios
+          .get('http://188.166.111.117/doory/get_song_data.php?s=' + this.title)
+          .then(
+            function(response) {
+              this.song = response.data;
+              console.log(response.data);
+            }.bind(this),
+          );
+      }
+    },
+    savedata() {
+      if (this.title == 'Settings') {
+        axios
+          .post('http://188.166.111.117/doory/post_data.php', {
+            name: this.firstname,
+            speech: this.speech,
+          })
+          .then(function(response) {
+            console.log(response.data);
+          })
+          .then(
+            function() {
+              this.load();
+            }.bind(this),
+          )
+          .then(() => {
+            alert('Settings saved!');
+          });
+      } else {
+        axios
+          .get(
+            'http://188.166.111.117/doory/post_song_data.php?s=' +
+              this.title +
+              '&v=' +
+              this.song,
+          )
+          .then(function(response) {
+            console.log(response.data);
+          })
+          .then(
+            function() {
+              this.load();
+            }.bind(this),
+          )
+          .then(() => {
+            alert('Settings saved!');
+          });
+      }
+    },
+  },
   mounted() {
-    if (this.title == 'Settings') {
-      axios.get('http://188.166.111.117/doory/get.php').then(
-        function(response) {
-          this.firstname = response.data.name;
-          this.speech = response.data.speech;
-        }.bind(this),
-      );
-    }
+    this.load();
   },
 };
 </script>
@@ -112,8 +172,9 @@ export default {
 
 .setting__body
  padding 30px
- height 320px
+ min-height 320px
 .setting__icon
+ margin 10px
  width 60px
  height 60px
  font-size 2em

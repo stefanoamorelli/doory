@@ -1,10 +1,10 @@
 <template lang='pug'>
   #app
    Header
-    #pages
-     .dragend-page
+    swiper(ref='mySwiper')
+     .swiper-slide
       SettingComponent(title='Settings' body='' image='https://www.growly.io/wp-content/uploads/2016/08/15-must-have-tools-for-small-business.jpg')
-     .dragend-page(v-for='mood in moods')
+     .swiper-slide(v-for='mood in moods')
       SettingComponent(:title='mood.title' :body='mood.body' :image='mood.image' :stats='mood.stats')
 </template>
 
@@ -62,18 +62,10 @@ export default {
       moods: MOODS,
     };
   },
-  mounted() {
-    new Dragend(document.getElementById('pages'));
-  },
 };
 </script>
 
 <style lang='stylus'>
-.dragend-page
- padding 30px !important
-#pages
- height 700px
-#pages > div
- transform translateX(-2550px)
- transition all 3.5s ease
+.swiper-slide
+ padding 40px !important
 </style>
