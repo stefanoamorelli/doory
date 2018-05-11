@@ -155,30 +155,42 @@ def main():
     #os.system("/home/root/script.sh REST on on off")
     contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/surprise/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
     #get song, aplay background, pkill
-    #song = urllib.request.urlopen("http://188.166.111.117/doory/get_song_data.php?s=Happy")
-    #print(song)
-    #os.system("aplay /home/root/audio/" + song + " &")
+    song = urllib.request.urlopen("http://188.166.111.117/doory/get_song_data.php?s=Happy")
+    print(song)
+    os.system("aplay /home/root/audio/" + song + ".wav &")
 
   if mood == 1:
     #GPIO.output(gpio1, GPIO.HIGH) #FRAGRANCE demo
     #os.system("/home/root/script.sh REST on off off")
     contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/sorrow/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
-    
+    song = urllib.request.urlopen("http://188.166.111.117/doory/get_song_data.php?s=Happy")
+    print(song)
+    os.system("aplay /home/root/audio/" + song + ".wav &")
+	
   if mood == 2:
     #GPIO.output(gpio2, GPIO.HIGH) #FRAGRANCE demo
     #os.system("/home/root/script.sh REST off off on")
     contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/angry/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
-     
+    song = urllib.request.urlopen("http://188.166.111.117/doory/get_song_data.php?s=Happy")
+    print(song)
+    os.system("aplay /home/root/audio/" + song + ".wav &")
+	
   if mood == 3:
     #GPIO.output(gpio3, GPIO.HIGH) #FRAGRANCE demo
     #os.system("/home/root/script.sh REST off on off")
     contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/happy/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
+    song = urllib.request.urlopen("http://188.166.111.117/doory/get_song_data.php?s=Happy")
+    print(song)
+    os.system("aplay /home/root/audio/" + song + ".wav &")
 
   if mood == 4:
     #GPIO.output(gpio3, GPIO.HIGH) #FRAGRANCE demo
     #os.system("/home/root/script.sh REST off on off")
     contents = urllib.request.urlopen("https://maker.ifttt.com/trigger/neutral/with/key/plrPhCevofu9SYNLoWydfpbV4BDJNYTH8vqWQbCCJo_").read()
-  
+    song = urllib.request.urlopen("http://188.166.111.117/doory/get_song_data.php?s=Happy")
+    print(song)
+    os.system("aplay /home/root/audio/" + song + ".wav &")
+	
   contents4 = urllib.request.urlopen("http://188.166.111.117/doory/check_stop.php").read()
   contents4 = int(contents4)
   print(contents4)
